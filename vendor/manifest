@@ -1,0 +1,116 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/BurntSushi/toml",
+			"repository": "https://github.com/BurntSushi/toml",
+			"revision": "99064174e013895bbd9b025c31100bd1d9b590ca",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/braintree/manners",
+			"repository": "https://github.com/braintree/manners",
+			"revision": "82a8879fc5fd0381fa8b2d8033b19bf255252088",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/caihua-yin/go-common",
+			"repository": "https://github.com/caihua-yin/go-common",
+			"revision": "d95b53881cffe465b0d9702b95f5788bde52221f",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/caihua-yin/go-common/api",
+			"repository": "https://github.com/caihua-yin/go-common",
+			"revision": "17ce4a60b67b8f40c7f88de665cf39f1625a7861",
+			"branch": "master",
+			"path": "/api"
+		},
+		{
+			"importpath": "github.com/gorilla/context",
+			"repository": "https://github.com/gorilla/context",
+			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/gorilla/mux",
+			"repository": "https://github.com/gorilla/mux",
+			"revision": "757bef944d0f21880861c2dd9c871ca543023cba",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/hashicorp/consul/api",
+			"repository": "https://github.com/hashicorp/consul",
+			"revision": "17db4a572287f2b0cf93e47339a17db522f12d45",
+			"branch": "master",
+			"path": "/api"
+		},
+		{
+			"importpath": "github.com/hashicorp/go-cleanhttp",
+			"repository": "https://github.com/hashicorp/go-cleanhttp",
+			"revision": "ad28ea4487f05916463e2423a55166280e8254b5",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/hashicorp/serf/coordinate",
+			"repository": "https://github.com/hashicorp/serf",
+			"revision": "d3a67ab21bc8a4643fa53a3633f2d951dd50c6ca",
+			"branch": "master",
+			"path": "/coordinate"
+		},
+		{
+			"importpath": "github.com/jacobstr/confer",
+			"repository": "https://github.com/jacobstr/confer",
+			"revision": "9a227d38758a4f48761c1b9d295f55f0dc5c2bcf",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/kr/pretty",
+			"repository": "https://github.com/kr/pretty",
+			"revision": "cfb55aafdaf3ec08f0db22699ab822c50091b1c4",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/kr/text",
+			"repository": "https://github.com/kr/text",
+			"revision": "7cafcd837844e784b526369c9bce262804aebc60",
+			"branch": "main"
+		},
+		{
+			"importpath": "github.com/satori/go.uuid",
+			"repository": "https://github.com/satori/go.uuid",
+			"revision": "b061729afc07e77a8aa4fad0a2fd840958f1942a",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/cast",
+			"repository": "https://github.com/spf13/cast",
+			"revision": "24b6558033ffe202bf42f0f3b870dcc798dd2ba8",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/jwalterweatherman",
+			"repository": "https://github.com/spf13/jwalterweatherman",
+			"revision": "33c24e77fb80341fe7130ee7c594256ff08ccc46",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/spf13/pflag",
+			"repository": "https://github.com/spf13/pflag",
+			"revision": "5ccb023bc27df288a957c5e994cd44fd19619465",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/bluesuncorp/validator.v8",
+			"repository": "https://gopkg.in/bluesuncorp/validator.v8",
+			"revision": "5f57d2222ad794d0dffb07e664ea05e2ee07d60c",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/yaml.v2",
+			"repository": "https://gopkg.in/yaml.v2",
+			"revision": "a5b47d31c556af34a302ce5d659e6fea44d90de0",
+			"branch": "v2"
+		}
+	]
+}
