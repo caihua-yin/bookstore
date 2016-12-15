@@ -1,6 +1,6 @@
 ---
 http:
-    endpoint: 0.0.0.0:8094
+    endpoint: 0.0.0.0:8001
 log:
     # logs might either go to stderr or to file with rotation
     destination: stderr
