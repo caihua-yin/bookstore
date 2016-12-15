@@ -61,7 +61,7 @@ func (h *StoreHandler) PostItem(rw http.ResponseWriter, req *http.Request) {
 		item.ID, item.Brand, item.Name, item.Description, item.ImageURL)
 	h.storeItems[item.ID] = item
 	// Return 201 response with item ID in JSON
-	h.JSONStatus(rw, 201, map[string]string{"ID": item.ID})
+	h.JSONStatus(rw, 201, map[string]string{"id": item.ID})
 }
 
 // GetItem get an item by ID

@@ -1,4 +1,4 @@
-// Package models provide representation and persistence level models
+// Package model provide representation and persistence level models
 package model
 
 // StoreItem is the data structure of item in the store service
