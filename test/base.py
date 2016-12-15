@@ -6,7 +6,7 @@ import unittest
 import requests
 import json
 
-from service import service
+from server import service
 
 
 class BaseTestCase(unittest.TestCase):
