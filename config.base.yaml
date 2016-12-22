@@ -5,7 +5,7 @@ log:
     # logs might either go to stderr or to file with rotation
     destination: stderr
     # destination: file
-    # filename: /var/log/aos/bg-scheduler.log
+    # filename: /opt/store-service/store-service.log
     # max_size: 200 # in MB
     # max_age: 0 # in days
     # max_backups: 10 # number of files to keep

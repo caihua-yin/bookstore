@@ -10,7 +10,7 @@ check: env
 	#pylint --rcfile=pylintrc *.py
 
 functional: env check
-	. env/bin/activate && nosetests -v $(NOSEARGS) $(FUNCTIONAL)
+	. env/bin/activate && nosetests -v
 
 clean:
 	rm -rf env

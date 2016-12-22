@@ -10,6 +10,7 @@ all: deps check build test image
 ## Static Analysis ##
 deps:
 	go get -v github.com/golang/lint/golint
+	go get github.com/constabulary/gb/...
 
 check: deps
 	go vet ./src/...
@@ -27,10 +28,11 @@ test: build
 image: test
 	docker build --pull -t yinc2/$(SERVICE_NAME):$(DOCKER_TAG) -f Dockerfile .
 
-docker-push: docker-image
-	docker push docker-registry.core.rcsops.com/$(SERVICE_NAME):$(DOCKER_TAG)
-	docker tag docker-registry.core.rcsops.com/$(SERVICE_NAME):$(DOCKER_TAG) docker-registry.core.rcsops.com/$(SERVICE_NAME):$(VERSION)
-	docker push docker-registry.core.rcsops.com/$(SERVICE_NAME):$(VERSION)
+## Docker Image Push ##
+push: image
+	docker push yinc2/$(SERVICE_NAME):$(DOCKER_TAG)
+	docker tag yinc2/$(SERVICE_NAME):$(DOCKER_TAG) yinc2/$(SERVICE_NAME):$(VERSION)
+	docker push yinc2/$(SERVICE_NAME):$(VERSION)
 
 docker-build: docker-pull-golang
 	@rm -rf bin/ tmp/
