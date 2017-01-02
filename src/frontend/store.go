@@ -1,14 +1,15 @@
 package frontend
 
 import (
-	"log"
 	"net/http"
 
 	"model"
 
 	"github.com/caihua-yin/go-common/api"
+	"github.com/caihua-yin/go-common/logging"
 	"github.com/gorilla/mux"
 	"github.com/satori/go.uuid"
+	"github.com/uber-go/zap"
 )
 
 // StoreHandler handles job store API
@@ -57,8 +58,14 @@ func (h *StoreHandler) PostItem(rw http.ResponseWriter, req *http.Request) {
 		Description: bind.Description,
 		ImageURL:    bind.ImageURL,
 	}
-	log.Printf("Add new item, ID: %s, brand: %s, name: %s, description: %s, image: %s",
-		item.ID, item.Brand, item.Name, item.Description, item.ImageURL)
+	logger := logging.Logger()
+	logger.Info("Add new item",
+		zap.String("ID", item.ID),
+		zap.String("Brand", item.Brand),
+		zap.String("Name", item.Name),
+		zap.String("Description", item.Description),
+		zap.String("Image", item.ImageURL),
+	)
 	h.storeItems[item.ID] = item
 	// Return 201 response with item ID in JSON
 	h.JSONStatus(rw, 201, map[string]string{"id": item.ID})
@@ -70,5 +77,7 @@ func (h *StoreHandler) GetItem(rw http.ResponseWriter, req *http.Request) {
 		ID string `mux:"id"`
 	}
 	api.Check(api.Bind(req, &bind))
+	logger := logging.Logger()
+	logger.Info("Get item", zap.String("ID", bind.ID))
 	h.JSON(rw, h.storeItems[bind.ID])
 }
