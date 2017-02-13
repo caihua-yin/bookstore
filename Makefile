@@ -38,11 +38,11 @@ docker-build: docker-pull-golang
 	@rm -rf bin/ tmp/
 	@mkdir -p bin tmp/
 	docker run --rm \
-		-v "$$PWD/src":/queue-service/src \
-		-v "$$PWD/vendor":/queue-service/vendor \
-		-v "$$PWD/Makefile":/queue-service/Makefile \
-		-v "$$PWD/tmp":/queue-service/bin \
-		-w /queue-service \
+		-v "$$PWD/src":/$(SERVICE_NAME)/src \
+		-v "$$PWD/vendor":/$(SERVICE_NAME)/vendor \
+		-v "$$PWD/Makefile":/$(SERVICE_NAME)/Makefile \
+		-v "$$PWD/tmp":/$(SERVICE_NAME)/bin \
+		-w /$(SERVICE_NAME) \
 		$(DOCKER_ENV) \
 		golang:1.7 \
 		make "VERSION=$(VERSION)" deps install install-race test check

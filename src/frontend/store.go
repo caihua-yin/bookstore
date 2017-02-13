@@ -60,11 +60,11 @@ func (h *StoreHandler) PostItem(rw http.ResponseWriter, req *http.Request) {
 	}
 	logger := logging.Logger()
 	logger.Info("Add new item",
-		zap.String("ID", item.ID),
-		zap.String("Brand", item.Brand),
-		zap.String("Name", item.Name),
-		zap.String("Description", item.Description),
-		zap.String("Image", item.ImageURL),
+		zap.String("id", item.ID),
+		zap.String("brand", item.Brand),
+		zap.String("name", item.Name),
+		zap.String("description", item.Description),
+		zap.String("image", item.ImageURL),
 	)
 	h.storeItems[item.ID] = item
 	// Return 201 response with item ID in JSON
