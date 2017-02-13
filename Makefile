@@ -34,19 +34,25 @@ push: image
 	docker tag yinc2/$(SERVICE_NAME):$(DOCKER_TAG) yinc2/$(SERVICE_NAME):$(VERSION)
 	docker push yinc2/$(SERVICE_NAME):$(VERSION)
 
+# Pull golang image for docker build
+docker-pull-golang:
+	docker pull golang:1.7
+
+# Build in docker
 docker-build: docker-pull-golang
 	@rm -rf bin/ tmp/
 	@mkdir -p bin tmp/
 	docker run --rm \
 		-v "$$PWD/src":/$(SERVICE_NAME)/src \
+		-v "$$PWD/test":/$(SERVICE_NAME)/test \
 		-v "$$PWD/vendor":/$(SERVICE_NAME)/vendor \
 		-v "$$PWD/Makefile":/$(SERVICE_NAME)/Makefile \
 		-v "$$PWD/tmp":/$(SERVICE_NAME)/bin \
 		-w /$(SERVICE_NAME) \
 		$(DOCKER_ENV) \
 		golang:1.7 \
-		make "VERSION=$(VERSION)" deps install install-race test check
-	@cp tmp/$(SERVICE_NAME) tmp/$(SERVICE_NAME)-race bin/
+		make "VERSION=$(VERSION)" build
+	@cp tmp/$(SERVICE_NAME) bin/
 	@rm -rf tmp/
 
 docker-run:
