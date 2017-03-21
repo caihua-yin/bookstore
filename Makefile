@@ -7,38 +7,40 @@ GIT_VERSION := $(shell git describe --tags)
 
 all: deps check build test image
 
-## Static Analysis ##
+# Get Dependencies #
 deps:
 	go get -v github.com/golang/lint/golint
 	go get github.com/constabulary/gb/...
 
+## 1. Static Check ##
 check: deps
 	go vet ./src/...
 	golint ./src/...
 
-## Compile & Build ##
+## 2. Compile & Build ##
 build: check
 	gb build -ldflags "-X frontend.Version=$(VERSION)"
 
-## Pre-Deployment Testing ##
-test: build
+## 3. Pre-Deployment Testing ##
+unit:
+	gb test model -v
+functional: build
 	make -C test
+test: unit functional
 
-## Docker Image Build ##
+## 4. Image Build ##
 image: test
 	docker build --pull -t yinc2/$(SERVICE_NAME):$(DOCKER_TAG) -f Dockerfile .
 
-## Docker Image Push ##
+## 5. Image Push ##
 push: image
 	docker push yinc2/$(SERVICE_NAME):$(DOCKER_TAG)
 	docker tag yinc2/$(SERVICE_NAME):$(DOCKER_TAG) yinc2/$(SERVICE_NAME):$(VERSION)
 	docker push yinc2/$(SERVICE_NAME):$(VERSION)
 
-# Pull golang image for docker build
+# Docker build (Optional, this can help make the build server clean)
 docker-pull-golang:
 	docker pull golang:1.7
-
-# Build in docker
 docker-build: docker-pull-golang
 	@rm -rf bin/ tmp/
 	@mkdir -p bin tmp/
@@ -55,6 +57,7 @@ docker-build: docker-pull-golang
 	@cp tmp/$(SERVICE_NAME) bin/
 	@rm -rf tmp/
 
+# Docker run the image
 docker-run:
 	docker run -it -P --rm --name $(SERVICE_NAME) \
 			               docker-registry.core.rcsops.com/$(SERVICE_NAME)
